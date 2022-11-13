@@ -1,0 +1,71 @@
+:root {
+	--g1: rgb(98, 0, 234);
+	--g2: rgb(236, 64, 122);
+}
+
+@keyframes background-pan {
+	from {
+		background-position: 0% center;
+	}
+
+	to {
+		background-position: -200% center;
+	}
+}
+
+body {
+	height: 100vh;
+	width: 100vw;
+	background: linear-gradient(to right, var(--g1), var(--g2), var(--g1));
+	animation: background-pan 10s linear infinite;
+	background-size: 200%;
+	overflow: hidden;
+	margin: 0;
+	overflow: hidden;
+}
+
+#tiles {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	display: grid;
+	grid-template-rows: repeat(var(--rows), 1fr);
+	grid-template-columns: repeat(var(--columns), 1fr);
+	transform: rotateX(60deg) rotateY(0deg) rotateZ(-45deg);
+}
+
+.tile {
+	position: relative;
+	transition: 500ms ease;
+	background-color: rgb(20, 20, 20);
+}
+
+.tile>* {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	transition: 1s;
+}
+
+.top {
+	border: 1px solid blue;
+	background-color: rgb(20, 20, 20);
+
+}
+
+.left {
+	transform: rotateZ(0deg) rotateY(0deg) rotateX(0deg) translateX(-100%) translateY(100%) skewY(-45deg);
+}
+
+.right {
+	transform: rotateZ(0deg) rotateY(0deg) rotateX(0deg) translateY(100%) skewX(-45deg);
+}
+
+.left,
+.right,
+.top {
+	transform-origin: 0 0;
+	background-color: rgb(20, 20, 20);
+	height: 100%;
+	width: 100%;
+}
